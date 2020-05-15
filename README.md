@@ -1,8 +1,8 @@
 # A-Comeback-Story
 Predicting MLB comeback wins using Statcast data 
 
-![Baseball Header]<img src="images/chart.png"
-     alt="Demographics" />
+<img src="images/chart.png"
+     alt="open" />
 
 <p align="center">
   <img src="https://img.shields.io/badge/Maintained%3F-IN PROG-blue?style=flat-square"></img>
@@ -10,7 +10,6 @@ Predicting MLB comeback wins using Statcast data
 </p>
 
 | [Joseph Shanks](https://github.com/josephshanks) |
----|---|---|
 
  
 ## Table of Contents
@@ -35,7 +34,11 @@ Predicting MLB comeback wins using Statcast data
 
 
 
-Baseball is America's past time, a game that has been played for centries and a league that was formed way back in 1869. The game was simple, use the stick, hit the ball. Besides keeping score of course, the first statistic for Major League Baseball was created in 1872, simply hits per game. Fast forward to the 1980s and baseball statistics really had not progressed much further than your basic statistics that you may be aware of, batting average, hits, home runs, total bases, ERA (earned run average) etc. Then the godfather Bill James comes along who started the 'Moneyball' era in baseball. His philosophy was rather than projecting what players might be better than others based off scours intuition, that teams should really be looking at data of players and which players get on base more often. In a nutshell, his philosophy was more people on base=more runs. Bill James philosophy was first adopted by Billy Beane and the Oakland Athletics. With James' philosophy the Athletics were able to be in the bottom 5 in total player payroll yet compete with teams like the yankees, who were almost tripple the amount of money spent towards their players. In fact in 2002, the A's had the most consecutive wins out of any team in MLB history being the first to implement this new age philosphy. The A's were expected to be one of the worst teams in baseball yet became one of the best with all odds stacked against them. That is the power of statistics.  ![THE NATIONAL UFO REPORTING CENTER](http://www.nuforc.org/). 
+Baseball is America's past time, a game that has been played for centries and a league that was formed way back in 1869. The game was simple, use the stick, hit the ball. Besides keeping score of course, the first statistic for Major League Baseball was created in 1872, simply hits per game. Fast forward to the 1980s and baseball statistics really had not progressed much further than your basic statistics that you may be aware of, batting average, hits, home runs, total bases, ERA (earned run average) etc. Then the godfather Bill James comes along who started the 'Moneyball' era in baseball. His philosophy was rather than projecting what players might be better than others based off scours intuition, that teams should really be looking at data of players and which players get on base more often. In a nutshell, his philosophy was more people on base=more runs. Bill James philosophy was first adopted by Billy Beane and the Oakland Athletics. With James' philosophy the Athletics were able to be in the bottom 5 in total player payroll yet compete with teams like the yankees, who were almost tripple the amount of money spent towards their players. In fact in 2002, the A's had the most consecutive wins out of any team in MLB history being the first to implement this new age philosphy. The A's were expected to be one of the worst teams in baseball yet became one of the best with all odds stacked against them. That is the power of statistics.  
+
+<img src="images/athletic.png"
+     alt="open" />
+
 
 ### New Age Data
 
@@ -50,15 +53,20 @@ SOURCE             | TIMEFRAME | N_RECORDS
 :-------------------------:|:-------------------------:|:-------------------------:|
 ![Statcast](https://baseballsavant.mlb.com/statcast_search)  | 2019 MLB SEASON |  244,393
 
-<img align="right" src="https://raw.githubusercontent.com/boogiedev/UFO-SIGHTINGS/master/media/nuforc.PNG"></img>
+```python
+files=['data/barrell BREAKING.csv','data/barrell FAST.csv','data/barrell OFFSPEED.csv','data/flare:burner BREAKING.csv','data/flare:burner FAST.csv',
+       'data/flare:burner OFFSPEED.csv','data/no contact BREAKING.csv','data/no contact FAST.csv','data/no contact OFFSPEED.csv','data/poor:top BREAKING.csv',
+      'data/poor:top OFFSPEED.csv','data/poor:top FAST.csv','data/poor:under BREAKING.csv','data/poor:under OFFSPEED.csv','data/poor:under FAST.csv',
+      'data/poor:weak BREAKING.csv','data/poor:weak OFFSPEED.csv','data/poor:weak FAST.csv','data/solid contact BREAKING.csv',
+       'data/solid contact OFFSPEED.csv','data/solid contact FAST.csv']
+```
 
 The data I used was from the most recent baseball season (2019) Below is a preview of the format that the data comes in from the website.
 
 <br/>
 
-<p align="center">
-  <img src="https://raw.githubusercontent.com/boogiedev/UFO-SIGHTINGS/master/media/dataexcerpt.PNG"></img>
-</p>
+<img src="images/gendata.png"
+     alt="data" />
 
 
 
@@ -86,9 +94,9 @@ Shown below are just a few of the features that I was able to work with:
 - `release_spin`: Spin rate of pitch tracked by Statcast.
 - `release_extension`: Release extension of pitch in feet as tracked by Statcast.
 - `if_fielding_alignment`: Infield fielding alignment at the time of the pitch.
-<p align="center">
-  <img src="https://raw.githubusercontent.com/boogiedev/UFO-SIGHTINGS/master/media/dfbefore.PNG"></img>
-</p>
+
+<img src="images/df.png"
+     alt="df" />
 
 
 ### Import and Data Cleaning
@@ -174,9 +182,8 @@ def cleaning(df):
 
 Below is a snapshot of the new data frame.
 
-<p align="center">
-  <img src="https://raw.githubusercontent.com/boogiedev/UFO-SIGHTINGS/master/media/dfafter.PNG"></img>
-</p>
+<img src="images/new_df.png"
+     alt="newdf" />
 
 
 ---
@@ -185,10 +192,32 @@ Below is a snapshot of the new data frame.
 ### Logistic Regression - Random Forest - Gradient Boosting
 
 Once running my models, I started with a great accuracy score of just around 80% using the random forest model and around .9 log loss. I thought this was great and decided to try out the gradient boosting model as well in hopes of improving my score. I didn't get much better. Originally I was pretty happy with my score until I printed out my confusion matrix...
+```python
+# Train and fit model                                                   
+rf = RandomForestClassifier(n_estimators=10,
+                           max_features='auto',
+                           random_state=123)
+rf.fit(X_train, y_train)
+                                     
+# Test Prediction
+pred = rf.predict(X_test)
+print(f"log loss = {log_loss(y_test, rf.predict_proba(X_test)[:, 1])}")
+print(f"accuracy = {rf.score(X_test, y_test)}")
+```
+Random Forest Returns: log loss = 0.9092159695662608
+                       accuracy = 0.8035319727000442
+                       
+Gradient Boosting Classifer: 
 
-<p align="center">
-  <img src="https://raw.githubusercontent.com/boogiedev/UFO-SIGHTINGS/master/media/dfafter.PNG"></img>
-</p>
+log loss = 0.4580682449284647
+accuracy = 0.80858933861438
+
+
+Confusion Matrix:
+```python
+[[48570   829]
+ [11175   525]]
+```       
 
 My model was simply predicting just about every pitch to result in a soft contact hit/no contact hit. I believe the reason for this is due to the majority of pitches being in this category as well as the role the batter plays in solving my question. My model was not running with any form of statistic for the batter thus when a pitch is thrown to the worst batter in the league vs the best batter in the league, the model wouldn't know the difference. Additionally, through my EDA, it was very difficult to find a statistic that was highly correlated with hard contact rate or soft contact rate. 
 
