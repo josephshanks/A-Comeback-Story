@@ -21,7 +21,6 @@ Predicting hard contact rate for major league baseball pitchers using Statcast d
   - [Initial Intake](#initial-intake)
   - [Import and Data Cleaning](#import-and-data-cleaning)
 - [Modeling](#modeling)
-  - [Tokenizing](#tokenizing)
   - [Visualizations](#visualizations)
 - [Future Considerations](#future-considerations)
 - [License](#license)
@@ -229,9 +228,14 @@ My model was simply predicting just about every pitch to result in a soft contac
 Zone Chart of all pitcher in 2019:
 
 
+<img src="images/breakingbar.png"
+     alt="newdf" />
 
-
-
+<img src="images/fastbar.png"
+     alt="newdf" />
+     
+<img src="images/offspeedbar.png"
+     alt="newdf" />
 
 
 ## Future Considerations
