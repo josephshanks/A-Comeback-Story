@@ -221,11 +221,25 @@ Confusion Matrix:
  [11175   525]]
 ```       
 
+<img src="images/hypeparam.png"
+     alt="newdf" />
+     
+
+<img src="images/featimport.png"
+     alt="newdf" />
+
 My model was simply predicting just about every pitch to result in a soft contact hit/no contact hit. I believe the reason for this is due to the majority of pitches being in this category as well as the role the batter plays in solving my question. My model was not running with any form of statistic for the batter thus when a pitch is thrown to the worst batter in the league vs the best batter in the league, the model wouldn't know the difference. Additionally, through my EDA, it was very difficult to find a statistic that was highly correlated with hard contact rate or soft contact rate. 
 
 ### Visualizations
 
 Zone Chart of all pitcher in 2019:
+
+<img src="images/zonebar.png"
+     alt="newdf" />
+
+
+<img src="images/rotation.png"
+     alt="newdf" />
 
 
 <img src="images/breakingbar.png"
