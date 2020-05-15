@@ -238,6 +238,8 @@ Zone Chart of all pitcher in 2019:
      alt="newdf" />
 
 
+
+
 <img src="images/rotation.png"
      alt="newdf" />
 
