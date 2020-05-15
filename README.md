@@ -1,5 +1,5 @@
-# A-Comeback-Story
-Predicting MLB comeback wins using Statcast data 
+# Swing and a Miss
+Predicting hard contact rate for major league baseball pitchers using Statcast datasets.
 
 <img src="images/chart.png"
      alt="open" />
@@ -38,6 +38,9 @@ Baseball is America's past time, a game that has been played for centries and a 
 
 <img src="images/athletic.png"
      alt="open" />
+
+
+Being the first team to use statistical algorithms in baseball, the Athletics were able to win 103 games spending just under 400,000 dollars per win where as the Yankees spent over 1,210,000 per win. 
 
 
 ### New Age Data
@@ -225,25 +228,8 @@ My model was simply predicting just about every pitch to result in a soft contac
 
 Zone Chart of all pitcher in 2019:
 
-<p align="center">
-  <img src="https://github.com/boogiedev/UFO-SIGHTINGS/blob/master/media/observed_ufo_shapes.png?raw=true"></img>
-</p>
-
-> The choropleth map shown in the notebook 'choropleth_map.ipynb' shows the number of reports from each state in the time period, as well as the three most common words from those reports of each state.
-With this information, we see a detailed image of where the reports are coming from and what the reports are talking about.
-15:51
 
 
-
-<p align="center">
-  <img src="https://github.com/boogiedev/UFO-SIGHTINGS/blob/master/media/observed_ufo_shapes.png?raw=true"></img>
-</p>
-
-Changes in Vocabulary Size Per Minimum Document Frequency:
-
-<p align="center">
-  <img src="https://raw.githubusercontent.com/boogiedev/UFO-SIGHTINGS/master/media/mindf.PNG"></img>
-</p>
 
 
 
